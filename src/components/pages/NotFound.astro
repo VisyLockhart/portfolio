@@ -10,4 +10,15 @@ const n = content[lang].notFound;
     <p class="prose">{n.text}</p>
     <div class="actions"><a class="btn btn-primary" href={pathFor(lang)}>{n.back}</a></div>
   </div>
+  {lang === 'zh-TW' && (
+    <script is:inline>
+      // GitHub Pages 只會回傳根目錄的 404.html;網址在 /en/ 底下時改顯示英文版(網址不變)
+      if (location.pathname.indexOf('/en/') === 0) {
+        fetch('/en/404/')
+          .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
+          .then(function (html) { document.open(); document.write(html); document.close(); })
+          .catch(function () {});
+      }
+    </script>
+  )}
 </Base>
