@@ -1,0 +1,4 @@
+---
+const { label, primary = false } = Astro.props as { label: string; primary?: boolean };
+---
+<button type="button" class:list={['btn', { 'btn-primary': primary }]} data-mail data-u="visy.lockhart1943" data-d="gmail.com">{label}</button>

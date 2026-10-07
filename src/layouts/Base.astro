@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import { Image } from 'astro:assets';
+import ThemeScript from '../components/ThemeScript.astro';
+import Seo from '../components/Seo.astro';
+import avatar from '../assets/avatar-old.jpg';
+import { content, pathFor, type Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>[];
+}
+const { lang, slug, title, description, noindex, type, jsonLd } = Astro.props;
+const c = content[lang];
+const other: Lang = lang === 'en' ? 'zh-TW' : 'en';
+const items = [
+  ['eranaut', c.nav.eranaut],
+  ['eranarch', c.nav.eranarch],
+  ['game-dev', c.nav.game],
+  ['about', c.nav.about],
+] as const;
+---
+<!doctype html>
+<html lang={c.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ThemeScript />
+    <Seo {lang} {slug} {title} {description} {noindex} {type} {jsonLd} />
+    <meta name="theme-color" content="#eef4fc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#00152e" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body>
+    <a class="skip" href="#main">{c.skip}</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={pathFor(lang)} aria-label={`${c.name} — ${c.nav.home}`}>
+          <Image src={avatar} alt="" width={44} height={44} loading="eager" />
+          <span>{c.name}</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          {items.map(([s, label]) => (
+            <a href={pathFor(lang, s)} aria-current={slug === s ? 'page' : undefined}>{label}</a>
+          ))}
+        </nav>
+        <div class="tools">
+          <a class="pill-btn" href={pathFor(other, slug)} hreflang={content[other].htmlLang} lang={content[other].htmlLang} aria-label={c.switchLabel}>{c.switchTo}</a>
+          <button class="pill-btn theme-btn" type="button" id="theme-toggle" aria-label={c.themeLabel} title={c.themeLabel}>
+            <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5" /><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></svg>
+            <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" /></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>{c.footer.copy}</p>
+        <p>{c.footer.disclaimer}</p>
+      </div>
+    </footer>
+    <script>
+      const root = document.documentElement;
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch {}
+      });
+      // 寄信按鈕:信箱不直接寫在 HTML 裡,點擊時才組出 mailto
+      document.querySelectorAll<HTMLElement>('[data-mail]').forEach((el) => {
+        el.addEventListener('click', () => {
+          location.href = 'mailto:' + el.dataset.u + '@' + el.dataset.d;
+        });
+      });
+    </script>
+  </body>
+</html>

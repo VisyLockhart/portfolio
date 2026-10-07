@@ -1,0 +1,7 @@
+---
+import { content, pathFor, type Lang } from '../i18n/content';
+const { lang, label } = Astro.props as { lang: Lang; label: string };
+---
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href={pathFor(lang)}>{content[lang].common.breadcrumbHome}</a> / <span aria-current="page">{label}</span>
+</nav>

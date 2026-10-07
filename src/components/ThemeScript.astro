@@ -1,0 +1,13 @@
+---
+// 在 <head> 內最先執行,避免閃白。偏好存 localStorage(讀不到就跟隨系統)。
+---
+<script is:inline>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>

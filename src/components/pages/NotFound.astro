@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import { content, pathFor, type Lang } from '../../i18n/content';
+const { lang } = Astro.props as { lang: Lang };
+const n = content[lang].notFound;
+---
+<Base {lang} slug="" title={n.title} description={n.text} noindex>
+  <div class="container section">
+    <h1>{n.h1}</h1>
+    <p class="prose">{n.text}</p>
+    <div class="actions"><a class="btn btn-primary" href={pathFor(lang)}>{n.back}</a></div>
+  </div>
+</Base>

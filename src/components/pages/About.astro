@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import MailButton from '../MailButton.astro';
+import { content, GITHUB, type Lang } from '../../i18n/content';
+import { breadcrumb, profilePage } from '../../i18n/jsonld';
+const { lang } = Astro.props as { lang: Lang };
+const c = content[lang];
+const p = c.about;
+---
+<Base {lang} slug="about" title={p.title} description={p.description} type="article" jsonLd={[breadcrumb(lang, 'about', c.nav.about), profilePage(lang)]}>
+  <div class="container">
+    <div class="page-head">
+      <Crumb {lang} label={c.nav.about} />
+      <h1>{p.h1}</h1>
+    </div>
+    <section class="section">
+      <p class="prose">{p.intro}</p>
+      <p class="note">{p.avatarNote}</p>
+      <div class="actions">
+        <a class="btn" href={GITHUB} rel="me noopener">{c.common.github}</a>
+        <MailButton label={c.common.mail} primary />
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="skills">
+      <h2 id="skills">{p.skillsH}</h2>
+      <dl class="dl prose">
+        {p.skills.map(([k, v]) => (<><dt>{k}</dt><dd>{v}</dd></>))}
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="exp">
+      <h2 id="exp">{p.expH}</h2>
+      <div class="prose">
+        {p.experience.map((j) => (
+          <article class="job">
+            <header>
+              <h3>{j.company} · {j.role}</h3>
+              <span class="period">{j.period}</span>
+            </header>
+            <ul class="list">{j.points.map((x) => <li>{x}</li>)}</ul>
+            <p class="tech">{p.techLabel}: {j.tech}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="edu">
+      <h2 id="edu">{p.eduH}</h2>
+      <ul class="list prose">{p.edu.map((x) => <li>{x}</li>)}</ul>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import { content, LINKS, type Lang } from '../../i18n/content';
+import { breadcrumb, softwareCode } from '../../i18n/jsonld';
+const { lang } = Astro.props as { lang: Lang };
+const c = content[lang];
+const p = c.eranarch;
+---
+<Base
+  {lang}
+  slug="eranarch"
+  title={p.title}
+  description={p.description}
+  jsonLd={[breadcrumb(lang, 'eranarch', 'Eranarch'), softwareCode(lang, 'eranarch', 'Eranarch', p.description, LINKS.eranarchRepo, 'JavaScript')]}
+>
+  <div class="container">
+    <div class="page-head">
+      <Crumb {lang} label="Eranarch" />
+      <h1>{p.h1}</h1>
+      <p class="sub">{p.sub}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={LINKS.eranarchRepo} rel="noopener">{c.common.source}</a>
+      </div>
+    </div>
+    <section class="section"><p class="prose">{p.overview}</p></section>
+    <section class="section" aria-labelledby="features">
+      <h2 id="features">{c.common.features}</h2>
+      <ul class="list prose">{p.features.map((f) => <li>{f}</li>)}</ul>
+      <p class="note">{p.note}</p>
+    </section>
+    <section class="section" aria-labelledby="stack">
+      <h2 id="stack">{c.common.stack}</h2>
+      <ul class="tags" style="margin-top:0">{p.stack.map((s) => <li class="tag">{s}</li>)}</ul>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import desktop from '../../assets/desktop-overview.webp';
+import mobile from '../../assets/mobile-overview.webp';
+import { content, LINKS, type Lang } from '../../i18n/content';
+import { breadcrumb, softwareCode } from '../../i18n/jsonld';
+const { lang } = Astro.props as { lang: Lang };
+const c = content[lang];
+const p = c.eranaut;
+const arch = lang === 'en' ? LINKS.eranautArchEn : LINKS.eranautArchZh;
+---
+<Base
+  {lang}
+  slug="eranaut"
+  title={p.title}
+  description={p.description}
+  jsonLd={[breadcrumb(lang, 'eranaut', 'Eranaut'), softwareCode(lang, 'eranaut', 'Eranaut', p.description, LINKS.eranautRepo, 'TypeScript')]}
+>
+  <div class="container">
+    <div class="page-head">
+      <Crumb {lang} label="Eranaut" />
+      <h1>{p.h1}</h1>
+      <p class="sub">{p.sub}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={LINKS.demo} rel="noopener">{c.common.demo}</a>
+        <a class="btn" href={LINKS.eranautRepo} rel="noopener">{c.common.source}</a>
+        <a class="btn" href={arch} rel="noopener">{c.common.arch}</a>
+      </div>
+    </div>
+
+    <section class="section">
+      <p class="prose">{p.overview}</p>
+    </section>
+
+    <section class="section" aria-labelledby="shots">
+      <h2 id="shots">{p.shotsH}</h2>
+      <div class="shots">
+        <figure class="desktop">
+          <Image src={desktop} alt={p.shotDesktopAlt} widths={[640, 960, 1280]} sizes="(min-width: 900px) 720px, 100vw" />
+        </figure>
+        <figure class="mobile">
+          <Image src={mobile} alt={p.shotMobileAlt} widths={[280, 420]} sizes="280px" />
+        </figure>
+      </div>
+      <p class="note">{p.shotNote}</p>
+    </section>
+
+    <section class="section" aria-labelledby="features">
+      <h2 id="features">{c.common.features}</h2>
+      <ul class="list prose">{p.features.map((f) => <li>{f}</li>)}</ul>
+    </section>
+
+    <section class="section" aria-labelledby="stack">
+      <h2 id="stack">{c.common.stack}</h2>
+      <ul class="tags" style="margin-top:0">{p.stack.map((s) => <li class="tag">{s}</li>)}</ul>
+    </section>
+
+    <section class="section" aria-labelledby="tradeoffs">
+      <h2 id="tradeoffs">{c.common.tradeoffs}</h2>
+      <ul class="list prose">{p.tradeoffs.map((t) => <li>{t}</li>)}</ul>
+    </section>
+
+    <section class="section" aria-labelledby="challenge">
+      <h2 id="challenge">{p.challengeH}</h2>
+      <p class="prose">{p.challenge}</p>
+    </section>
+  </div>
+</Base>

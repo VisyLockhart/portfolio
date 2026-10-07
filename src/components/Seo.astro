@@ -1,0 +1,47 @@
+---
+import { content, pathFor, type Lang } from '../i18n/content';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>[];
+}
+const { lang, slug, title, description, noindex = false, type = 'website', jsonLd = [] } = Astro.props;
+const site = Astro.site!;
+const url = (l: Lang) => new URL(pathFor(l, slug), site).href;
+const canonical = url(lang);
+const other: Lang = lang === 'en' ? 'zh-TW' : 'en';
+const image = new URL('/og.png', site).href;
+const c = content[lang];
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{!noindex && (
+  <>
+    <link rel="alternate" hreflang="zh-TW" href={url('zh-TW')} />
+    <link rel="alternate" hreflang="en" href={url('en')} />
+    <link rel="alternate" hreflang="x-default" href={url('zh-TW')} />
+  </>
+)}
+{noindex && <meta name="robots" content="noindex, follow" />}
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Visy Lockhart" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={c.ogLocale} />
+<meta property="og:locale:alternate" content={content[other].ogLocale} />
+<meta property="og:image" content={image} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Visy Lockhart — Full-stack developer" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+{jsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}

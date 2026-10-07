@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumb from '../Crumb.astro';
+import { content, LINKS, type Lang } from '../../i18n/content';
+import { breadcrumb, softwareCode } from '../../i18n/jsonld';
+const { lang } = Astro.props as { lang: Lang };
+const c = content[lang];
+const p = c.game;
+---
+<Base
+  {lang}
+  slug="game-dev"
+  title={p.title}
+  description={p.description}
+  jsonLd={[breadcrumb(lang, 'game-dev', c.nav.game), softwareCode(lang, 'game-dev', 'Submarine Voyage', p.unityText, LINKS.unityRepo, 'C#')]}
+>
+  <div class="container">
+    <div class="page-head">
+      <Crumb {lang} label={c.nav.game} />
+      <h1>{p.h1}</h1>
+      <p class="sub">{p.sub}</p>
+    </div>
+    <section class="section"><p class="prose">{p.intro}</p></section>
+
+    <section class="section" aria-labelledby="unity">
+      <h2 id="unity">{p.unityTitle} <span class="status done">{c.common.done}</span></h2>
+      <div class="card prose">
+        <p>{p.unityText}</p>
+        <ul class="list">{p.unityPoints.map((x) => <li>{x}</li>)}</ul>
+        <div class="actions">
+          <a class="btn btn-primary" href={LINKS.unityRepo} rel="noopener">{c.common.source}</a>
+          <a class="btn" href={LINKS.unityRelease} rel="noopener">{c.common.release}</a>
+          <a class="btn" href={LINKS.unityGdd} rel="noopener">{c.common.gdd}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="plan">
+      <h2 id="plan">{p.planH} <span class="status">{c.common.planned}</span></h2>
+      <dl class="dl prose">
+        {p.plan.map((x) => (<><dt>{x.name}</dt><dd>{x.text}</dd></>))}
+      </dl>
+    </section>
+  </div>
+</Base>

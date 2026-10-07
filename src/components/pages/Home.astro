@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import MailButton from '../MailButton.astro';
+import art from '../../assets/avatar-new.png';
+import { content, pathFor, GITHUB, type Lang } from '../../i18n/content';
+import { personGraph } from '../../i18n/jsonld';
+const { lang } = Astro.props as { lang: Lang };
+const c = content[lang];
+const h = c.home;
+---
+<Base {lang} slug="" title={h.title} description={h.description} jsonLd={personGraph(lang)}>
+  <div class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <span class="badge">{h.badge}</span>
+        <h1 id="hero-title">{h.h1}</h1>
+        <p class="lead">{h.lead}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href={pathFor(lang, 'eranaut')}>{h.ctaPrimary}</a>
+          <a class="btn" href={pathFor(lang, 'about')}>{h.ctaSecondary}</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <Image src={art} alt={h.avatarAlt} width={390} height={316} loading="eager" />
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="projects-title">
+      <h2 id="projects-title">{c.common.projects}</h2>
+      <div class="grid">
+        {h.cards.map((card) => (
+          <article class="card">
+            <h3><a href={pathFor(lang, card.slug)}>{card.title}</a></h3>
+            <p>{card.text}</p>
+            <ul class="tags">{card.tags.map((t) => <li class="tag">{t}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">{c.common.contact}</h2>
+      <p class="prose">{h.contactText}</p>
+      <div class="actions">
+        <a class="btn" href={GITHUB} rel="me noopener">{c.common.github}</a>
+        <MailButton label={c.common.mail} primary />
+      </div>
+    </section>
+  </div>
+</Base>
