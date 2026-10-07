@@ -22,7 +22,7 @@ const zh = {
   switchLabel: '切換成英文',
   themeLabel: '切換淺色 / 深色主題',
   footer: {
-    copy: '© 2026 Winter@迦樓羅',
+    copy: '© 2026 Visy Lockhart',
     disclaimer:
       'Eranaut 與 Eranarch 為非官方粉絲工具,與 SQUARE ENIX CO., LTD. 無關,僅供社群內部使用,不得用於商業用途。',
   },
@@ -289,7 +289,7 @@ const en: Content = {
   switchLabel: 'Switch to Traditional Chinese',
   themeLabel: 'Toggle light / dark theme',
   footer: {
-    copy: '© 2026 Winter@迦樓羅',
+    copy: '© 2026 Visy Lockhart',
     disclaimer:
       'Eranaut and Eranarch are unofficial fan tools, not affiliated with SQUARE ENIX CO., LTD., made for a community and not for commercial use.',
   },

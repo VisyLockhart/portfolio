@@ -17,6 +17,8 @@ interface Props {
 }
 const { lang, slug, title, description, noindex, type, jsonLd } = Astro.props;
 const c = content[lang];
+// The fan-tool notice only belongs on the pages about those tools.
+const showNotice = slug === 'eranaut' || slug === 'eranarch';
 const other: Lang = lang === 'en' ? 'zh-TW' : 'en';
 const items = [
   ['eranaut', c.nav.eranaut],
@@ -66,7 +68,7 @@ const items = [
     <footer class="site-footer">
       <div class="container">
         <p>{c.footer.copy}</p>
-        <p>{c.footer.disclaimer}</p>
+        {showNotice && <p>{c.footer.disclaimer}</p>}
       </div>
     </footer>
     <script>
