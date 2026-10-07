@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Crumb from '../Crumb.astro';
+import ArchDiagram from '../ArchDiagram.astro';
 import desktop from '../../assets/desktop-overview.webp';
 import mobile from '../../assets/mobile-overview.webp';
 import { content, LINKS, type Lang } from '../../i18n/content';
@@ -32,6 +33,11 @@ const arch = lang === 'en' ? LINKS.eranautArchEn : LINKS.eranautArchZh;
 
     <section class="section">
       <p class="prose">{p.overview}</p>
+    </section>
+
+    <section class="section" aria-labelledby="architecture">
+      <h2 id="architecture">{p.archH}</h2>
+      <ArchDiagram {lang} />
     </section>
 
     <section class="section" aria-labelledby="shots">

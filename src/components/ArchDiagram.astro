@@ -1,0 +1,118 @@
+---
+import { content, type Lang } from '../i18n/content';
+const { lang } = Astro.props as { lang: Lang };
+const t = content[lang].eranaut.diagram;
+---
+<figure class="arch">
+  <div class="arch-scroll" tabindex="0" role="region" aria-label={t.scrollLabel}>
+    <svg viewBox="0 0 960 566" role="img" aria-labelledby="arch-t arch-d" xmlns="http://www.w3.org/2000/svg">
+      <title id="arch-t">{t.title}</title>
+      <desc id="arch-d">{t.desc}</desc>
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" class="head" />
+        </marker>
+      </defs>
+
+      <!-- 主機群組 -->
+      <rect x="195" y="20" width="755" height="452" rx="18" class="group" />
+      <text x="213" y="46" class="cap">{t.host}</text>
+
+      <!-- 瀏覽器 -->
+      <rect x="15" y="90" width="110" height="64" rx="10" class="box" />
+      <text x="70" y="118" class="lbl" text-anchor="middle">{t.browser}</text>
+      <text x="70" y="136" class="sub" text-anchor="middle">Angular</text>
+
+      <!-- tunnel -->
+      <rect x="215" y="90" width="135" height="64" rx="10" class="box" />
+      <text x="282" y="118" class="lbl" text-anchor="middle">eranaut-tunnel</text>
+      <text x="282" y="136" class="sub" text-anchor="middle">cloudflared</text>
+
+      <!-- caddy -->
+      <rect x="395" y="90" width="150" height="64" rx="10" class="box" />
+      <text x="470" y="115" class="lbl" text-anchor="middle">eranaut-web</text>
+      <text x="470" y="132" class="sub" text-anchor="middle">Caddy</text>
+      <text x="470" y="147" class="sub" text-anchor="middle">{t.caddy}</text>
+
+      <!-- bot -->
+      <rect x="395" y="160" width="150" height="64" rx="10" class="box" />
+      <text x="470" y="185" class="lbl" text-anchor="middle">eranarch-bot</text>
+      <text x="470" y="202" class="sub" text-anchor="middle">discord.js</text>
+      <text x="470" y="217" class="sub" text-anchor="middle">{t.bot}</text>
+
+      <!-- API -->
+      <rect x="585" y="60" width="355" height="372" rx="14" class="api" />
+      <text x="601" y="84" class="lbl">eranaut-api · Fastify</text>
+
+      <rect x="601" y="100" width="130" height="44" rx="22" class="pill" />
+      <text x="666" y="119" class="lbl" text-anchor="middle">{t.pub}</text>
+      <text x="666" y="135" class="sub" text-anchor="middle">{t.pubSub}</text>
+
+      <rect x="601" y="170" width="130" height="44" rx="22" class="pill internal" />
+      <text x="666" y="189" class="lbl" text-anchor="middle">{t.int}</text>
+      <text x="666" y="205" class="sub" text-anchor="middle">{t.intSub}</text>
+
+      <rect x="756" y="100" width="168" height="130" rx="10" class="svc" />
+      <text x="840" y="150" class="lbl" text-anchor="middle">{t.svc}</text>
+      <text x="840" y="170" class="sub" text-anchor="middle">{t.svcSub1}</text>
+      <text x="840" y="186" class="sub" text-anchor="middle">{t.svcSub2}</text>
+
+      <rect x="601" y="290" width="100" height="70" rx="10" class="box" />
+      <text x="651" y="330" class="lbl" text-anchor="middle">SQLite</text>
+      <rect x="713" y="290" width="100" height="70" rx="10" class="box" />
+      <text x="763" y="319" class="lbl" text-anchor="middle">OCR</text>
+      <text x="763" y="337" class="sub" text-anchor="middle">PP-OCRv4</text>
+      <text x="763" y="351" class="sub" text-anchor="middle">{t.ocrSub}</text>
+      <rect x="824" y="290" width="100" height="70" rx="10" class="box" />
+      <text x="874" y="315" class="lbl" text-anchor="middle">{t.sched}</text>
+      <text x="874" y="333" class="sub" text-anchor="middle">{t.sched1}</text>
+      <text x="874" y="348" class="sub" text-anchor="middle">{t.sched2}</text>
+
+      <!-- 外部服務 -->
+      <rect x="395" y="492" width="300" height="56" rx="10" class="box ext" />
+      <text x="545" y="526" class="lbl" text-anchor="middle">Discord API</text>
+      <rect x="760" y="492" width="180" height="56" rx="10" class="box ext" />
+      <text x="850" y="526" class="lbl" text-anchor="middle">{t.push}</text>
+
+      <!-- 箭頭 -->
+      <g class="flow" marker-end="url(#arr)">
+        <path d="M125 122 H213" />
+        <path d="M350 122 H393" />
+        <path d="M545 122 H599" />
+        <path d="M545 192 H599" />
+        <path d="M731 122 H754" />
+        <path d="M731 192 H754" />
+        <path d="M840 230 V258 H651 V288" fill="none" />
+        <path d="M840 258 H763 V288" />
+        <path d="M840 258 H874 V288" />
+        <path d="M470 224 V490" />
+        <path d="M900 360 V490" />
+        <path d="M830 360 V400 H650 V490" fill="none" />
+      </g>
+      <text x="169" y="114" class="sub" text-anchor="middle">HTTPS</text>
+      <text x="486" y="352" class="sub">{t.gateway}</text>
+      <text x="892" y="454" class="sub" text-anchor="end">Web Push</text>
+      <text x="662" y="420" class="sub">{t.dm}</text>
+    </svg>
+  </div>
+  <figcaption>{t.caption}</figcaption>
+</figure>
+
+<style>
+  .arch { margin: 0; }
+  .arch-scroll { overflow-x: auto; border: 3px solid var(--line); border-radius: 14px; background: var(--panel); box-shadow: 6px 6px 0 var(--shadow); padding: 8px; }
+  svg { display: block; min-width: 760px; width: 100%; height: auto; font-family: var(--font-body); }
+  .box { fill: var(--panel); stroke: var(--line); stroke-width: 2.5; }
+  .ext { stroke-dasharray: 7 5; fill: var(--soft2); }
+  .group { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 9 6; }
+  .api { fill: var(--soft2); stroke: var(--line); stroke-width: 3; }
+  .pill { fill: var(--soft); stroke: var(--line); stroke-width: 2.5; }
+  .pill.internal { fill: var(--panel); stroke-dasharray: 6 4; }
+  .svc { fill: var(--soft); stroke: var(--line); stroke-width: 2.5; }
+  .lbl { fill: var(--ink); font-size: 14px; font-weight: 700; }
+  .sub, .cap { fill: var(--muted); font-size: 12px; }
+  .cap { font-weight: 700; font-size: 13px; }
+  .flow path { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+  .head { fill: var(--ink); }
+  figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; }
+</style>
