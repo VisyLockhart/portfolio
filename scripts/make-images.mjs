@@ -16,7 +16,7 @@ const svg = `
   <rect x="24" y="24" width="1152" height="582" rx="28" fill="none" stroke="#002050" stroke-width="8"/>
   <text x="80" y="260" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="84" fill="#002050">Visy Lockhart</text>
   <text x="80" y="340" font-family="DejaVu Sans, Arial, sans-serif" font-size="36" fill="#0a6cc8">Full-stack developer</text>
-  <text x="80" y="392" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#3a5a8a">.NET · Angular · Node.js</text>
+  <text x="80" y="392" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#3a5a8a">.NET · Angular</text>
   <text x="80" y="540" font-family="DejaVu Sans, Arial, sans-serif" font-size="26" fill="#002050">portfolio.aequoreranos.com</text>
 </svg>`;
 await sharp(Buffer.from(svg))

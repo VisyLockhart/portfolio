@@ -46,7 +46,7 @@ const zh = {
     breadcrumbHome: '首頁',
   },
   home: {
-    title: 'Visy Lockhart — 全端開發者(.NET · Angular · Node.js)作品集',
+    title: 'Visy Lockhart — 全端開發者(.NET · Angular)作品集',
     description:
       '7 年以上 .NET 後端與全端經驗。作品:Eranaut(Angular PWA + Fastify + OCR + Docker 自架上線)、Eranarch(Discord bot)、Unity 小型遊戲 demo。',
     badge: '全端開發 · Full-stack',
@@ -313,7 +313,7 @@ const en: Content = {
     breadcrumbHome: 'Home',
   },
   home: {
-    title: 'Visy Lockhart — Full-stack developer portfolio (.NET · Angular · Node.js)',
+    title: 'Visy Lockhart — Full-stack developer portfolio (.NET · Angular)',
     description:
       '7+ years of .NET backend and full-stack experience. Projects: Eranaut (Angular PWA + Fastify + OCR, self-hosted with Docker), Eranarch (Discord bot) and a small Unity game demo.',
     badge: 'Full-stack · 全端開發',

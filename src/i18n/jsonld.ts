@@ -15,7 +15,7 @@ export function personGraph(lang: Lang): Record<string, unknown>[] {
       jobTitle: lang === 'en' ? 'Full-stack developer' : '全端開發者',
       description: c.home.description,
       sameAs: [GITHUB],
-      knowsAbout: ['.NET', 'ASP.NET Core', 'Angular', 'TypeScript', 'Node.js', 'Docker', 'Unity'],
+      knowsAbout: ['.NET', 'ASP.NET Core', 'Angular', 'TypeScript', 'Docker', 'Unity'],
     },
     {
       '@context': 'https://schema.org',
