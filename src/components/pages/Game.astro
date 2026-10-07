@@ -35,6 +35,14 @@ const p = c.game;
       </div>
     </section>
 
+    <section class="section" aria-labelledby="log">
+      <h2 id="log">{p.logH}</h2>
+      <p class="prose">{p.logIntro}</p>
+      <dl class="dl prose">
+        {p.log.map((x) => (<><dt>{x.name}</dt><dd>{x.text}</dd></>))}
+      </dl>
+    </section>
+
     <section class="section" aria-labelledby="plan">
       <h2 id="plan">{p.planH} <span class="status">{c.common.planned}</span></h2>
       <dl class="dl prose">

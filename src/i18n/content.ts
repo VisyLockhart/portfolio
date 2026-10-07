@@ -176,6 +176,18 @@ const zh = {
       '附一頁 GDD(玩法循環、MVP 範圍、數值、技術設計)與英文 README。',
       '與 AI 協作:我決定規格與驗證,程式碼由 AI 協助撰寫。',
     ],
+    logH: '學習紀錄:三天做出 Submarine Voyage',
+    logIntro: '邊做邊學 Hierarchy、Inspector、Canvas、Prefab、ScriptableObject、Layout Group 與錨點。',
+    log: [
+      {
+        name: '試玩後調整',
+        text: '用 600x 倍率很快就把四艘升滿,而且之後沒有目標,所以加上艦隊目標進度與完成視窗;航線視窗也改成顯示該艘潛艇實際的等待時間與收穫範圍。',
+      },
+      {
+        name: '踩到的坑',
+        text: 'Canvas Scaler 原本的設定在 4:3 視窗會裁掉卡片,改成 Expand 並固定卡片寬度。',
+      },
+    ],
     planH: '接下來',
     plan: [
       { name: 'UE5 入門與小型專案', text: '連線、3D 取向的專案是下一個目標。' },
@@ -430,6 +442,18 @@ const en: Content = {
       'JSON saves (write to a temp file, then replace; corrupt saves are backed up) and 32 EditMode tests.',
       'A one-page GDD (gameplay loop, MVP scope, numbers, technical design) and an English README.',
       'Built with AI: I decided the specification and verified the result, and AI helped write the code.',
+    ],
+    logH: 'Learning log: building Submarine Voyage in three days',
+    logIntro: 'I learned the Hierarchy, Inspector, Canvas, Prefabs, ScriptableObjects, Layout Groups and anchors as I built.',
+    log: [
+      {
+        name: 'After playtesting',
+        text: 'At 600x speed all four submarines maxed out quickly and nothing was left to do, so I added a fleet-goal progress bar and a completion screen. The route window now shows each submarine’s actual wait time and reward range.',
+      },
+      {
+        name: 'A snag',
+        text: 'The default Canvas Scaler setting cropped cards in a 4:3 window; I switched it to Expand and fixed the card width.',
+      },
     ],
     planH: 'Next',
     plan: [
