@@ -72,7 +72,7 @@ const zh = {
       {
         slug: 'game-dev',
         title: '遊戲開發學習中',
-        text: '已完成 Unity 小型遊戲 demo 與 GDD,接著學習 UE5 與 GAS。',
+        text: '已完成 Unity 小型遊戲 demo 與 GDD,期待在實務中學習 UE5 與 GAS。',
         tags: ['Unity', 'C#', 'GDD'],
       },
     ],
@@ -162,7 +162,7 @@ const zh = {
   game: {
     title: '遊戲開發學習中 — Unity 小型遊戲 demo 與學習計畫 | Visy Lockhart',
     description:
-      '從 .NET 全端轉入遊戲開發:已完成 Unity 潛水艇出航小遊戲 demo 與 GDD(含原始碼與 Windows 版),接著學習 UE5 與 GAS。',
+      '從 .NET 全端轉入遊戲開發:已完成 Unity 潛水艇出航小遊戲 demo 與 GDD(含原始碼與 Windows 版),期待在實務中學習 UE5 與 GAS。',
     h1: '遊戲開發學習中',
     sub: '我沒有遊戲業實務經驗,正在用自學的方式轉入遊戲開發。',
     intro:
@@ -190,7 +190,7 @@ const zh = {
     ],
     planH: '接下來',
     plan: [
-      { name: 'UE5 入門與小型專案', text: '連線、3D 取向的專案是下一個目標。' },
+      { name: 'UE5', text: '期待在實務中學習 UE5,從連線、3D 取向的專案開始累積經驗。' },
       {
         name: 'GAS 概念筆記',
         text: '閱讀官方 GAS 文件,寫一頁自己的筆記:Ability、Attribute Set、Gameplay Effect、Gameplay Tag 的分工。',
@@ -339,7 +339,7 @@ const en: Content = {
       {
         slug: 'game-dev',
         title: 'Learning game development',
-        text: 'A small Unity game demo with a GDD is done; UE5 and GAS come next.',
+        text: 'A small Unity game demo with a GDD is done; I look forward to learning UE5 and GAS on the job.',
         tags: ['Unity', 'C#', 'GDD'],
       },
     ],
@@ -429,7 +429,7 @@ const en: Content = {
   game: {
     title: 'Learning game development — Unity demo and study plan | Visy Lockhart',
     description:
-      'Moving from .NET full-stack into game development: a small Unity submarine-voyage game with a GDD (source and Windows build) is done, with UE5 and GAS next.',
+      'Moving from .NET full-stack into game development: a small Unity submarine-voyage game with a GDD (source and Windows build) is done, and I look forward to learning UE5 and GAS on the job.',
     h1: 'Learning game development',
     sub: 'I have no professional game-industry experience yet, and I am learning on my own.',
     intro:
@@ -457,7 +457,7 @@ const en: Content = {
     ],
     planH: 'Next',
     plan: [
-      { name: 'UE5 introduction and a small project', text: 'A networked, 3D-oriented project is the next goal.' },
+      { name: 'UE5', text: 'I look forward to learning UE5 on the job, starting with networked, 3D-oriented projects.' },
       {
         name: 'GAS concept notes',
         text: 'Read the official GAS documentation and write a one-page note of my own on how Ability, Attribute Set, Gameplay Effect and Gameplay Tag divide responsibilities.',
