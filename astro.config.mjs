@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = 'https://portfolio.aequoreranos.com';
+const site = 'https://visylockhart.com';
 
 export default defineConfig({
   site,

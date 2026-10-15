@@ -17,7 +17,7 @@ const svg = `
   <text x="80" y="260" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="84" fill="#002050">Visy Lockhart</text>
   <text x="80" y="340" font-family="DejaVu Sans, Arial, sans-serif" font-size="36" fill="#0a6cc8">Full-stack developer</text>
   <text x="80" y="392" font-family="DejaVu Sans, Arial, sans-serif" font-size="28" fill="#3a5a8a">.NET · Angular</text>
-  <text x="80" y="540" font-family="DejaVu Sans, Arial, sans-serif" font-size="26" fill="#002050">portfolio.aequoreranos.com</text>
+  <text x="80" y="540" font-family="DejaVu Sans, Arial, sans-serif" font-size="26" fill="#002050">visylockhart.com</text>
 </svg>`;
 await sharp(Buffer.from(svg))
   .composite([{ input: art, left: 700, top: 150 }])

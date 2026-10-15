@@ -1,7 +1,7 @@
 # portfolio
 
 Visy Lockhart's portfolio site (Traditional Chinese at `/`, English at `/en/`).
-Built with [Astro](https://astro.build/), deployed to GitHub Pages at <https://portfolio.aequoreranos.com>.
+Built with [Astro](https://astro.build/), deployed to GitHub Pages at <https://visylockhart.com>.
 
 ## Develop
 

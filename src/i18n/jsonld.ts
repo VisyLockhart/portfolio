@@ -1,6 +1,6 @@
 import { GITHUB, content, pathFor, type Lang } from './content';
 
-const SITE = 'https://portfolio.aequoreranos.com';
+const SITE = 'https://visylockhart.com';
 const abs = (lang: Lang, slug = '') => new URL(pathFor(lang, slug), SITE).href;
 
 export function personGraph(lang: Lang): Record<string, unknown>[] {
