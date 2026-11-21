@@ -2,9 +2,6 @@
 export const GITHUB = 'https://github.com/VisyLockhart';
 export const LINKS = {
   demo: 'https://demo.eranaut.aequoreranos.com/',
-  eranautRepo: `${GITHUB}/eranaut-pwa`,
-  eranautArchZh: `${GITHUB}/eranaut-pwa/blob/main/docs/ARCHITECTURE.md`,
-  eranautArchEn: `${GITHUB}/eranaut-pwa/blob/main/docs/ARCHITECTURE.en.md`,
   eranarchRepo: `${GITHUB}/eranarch-bot`,
   unityRepo: `${GITHUB}/submarine-voyage-demo`,
   unityRelease: `${GITHUB}/submarine-voyage-demo/releases/tag/v1.0.0`,
@@ -31,7 +28,6 @@ const zh = {
     source: '原始碼',
     release: 'Windows 版 Release',
     gdd: 'GDD 文件',
-    arch: '完整架構說明(GitHub)',
     github: 'GitHub',
     mail: '寄信給我',
     mailDone: '已開啟郵件程式',
@@ -298,7 +294,6 @@ const en: Content = {
     source: 'Source code',
     release: 'Windows release',
     gdd: 'GDD document',
-    arch: 'Full architecture notes (GitHub)',
     github: 'GitHub',
     mail: 'Email me',
     mailDone: 'Mail app opened',
