@@ -40,14 +40,15 @@ export function breadcrumb(lang: Lang, slug: string, label: string): Record<stri
   };
 }
 
-export function softwareCode(lang: Lang, slug: string, name: string, description: string, repo: string, language: string): Record<string, unknown> {
+export function softwareCode(lang: Lang, slug: string, name: string, description: string, repo: string | null, language: string): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     name,
     description,
     url: abs(lang, slug),
-    codeRepository: repo,
+    // 原始碼不公開的作品(Eranaut)不帶 codeRepository
+    ...(repo ? { codeRepository: repo } : {}),
     programmingLanguage: language,
     author: { '@id': `${SITE}/#person` },
     inLanguage: content[lang].htmlLang,

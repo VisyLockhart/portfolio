@@ -10,14 +10,13 @@ import { breadcrumb, softwareCode } from '../../i18n/jsonld';
 const { lang } = Astro.props as { lang: Lang };
 const c = content[lang];
 const p = c.eranaut;
-const arch = lang === 'en' ? LINKS.eranautArchEn : LINKS.eranautArchZh;
 ---
 <Base
   {lang}
   slug="eranaut"
   title={p.title}
   description={p.description}
-  jsonLd={[breadcrumb(lang, 'eranaut', 'Eranaut'), softwareCode(lang, 'eranaut', 'Eranaut', p.description, LINKS.eranautRepo, 'TypeScript')]}
+  jsonLd={[breadcrumb(lang, 'eranaut', 'Eranaut'), softwareCode(lang, 'eranaut', 'Eranaut', p.description, null, 'TypeScript')]}
 >
   <div class="container">
     <div class="page-head">
@@ -26,8 +25,6 @@ const arch = lang === 'en' ? LINKS.eranautArchEn : LINKS.eranautArchZh;
       <p class="sub">{p.sub}</p>
       <div class="actions">
         <a class="btn btn-primary" href={LINKS.demo} rel="noopener">{c.common.demo}</a>
-        <a class="btn" href={LINKS.eranautRepo} rel="noopener">{c.common.source}</a>
-        <a class="btn" href={arch} rel="noopener">{c.common.arch}</a>
       </div>
     </div>
 
